@@ -24,7 +24,6 @@ class ContactsViewController: UIViewController,UITableViewDataSource,UITableView
             self.contactList += list
             self.tableView?.reloadData()
         }
-        
     }
     
     func setUpUI() -> () {

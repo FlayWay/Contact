@@ -17,10 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+//        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+//        self.window?.backgroundColor = UIColor.white
+//        self.window?.makeKeyAndVisible()
+//        self.window?.rootViewController = UINavigationController.init(rootViewController:ContactsViewController())
+        
+        self.window = UIWindow()
         self.window?.backgroundColor = UIColor.white
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = UINavigationController.init(rootViewController:ContactsViewController())
+    
+//        let ns = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+//        let ns = Bundle.main.namespace()
+        let ns = Bundle.main.namespace
+        let clsname = ns + "." + "ViewController"
+        let cls = NSClassFromString(clsname) as? UIViewController.Type
+        let vc = cls?.init()
+        self.window?.rootViewController = vc
         
         return true
     }
@@ -34,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+ 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
