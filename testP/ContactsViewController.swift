@@ -14,15 +14,12 @@ class ContactsViewController: UIViewController,UITableViewDataSource,UITableView
     var contactList = [Contact]()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         navigationItem.title = "联系人列表"
         let rightNavBar = UIBarButtonItem.init(title: "next", style: .plain, target: self, action: #selector(nextAction))
         navigationItem.rightBarButtonItem = rightNavBar
         setUpUI()
-        
         self.loadData { (list) in
-            
             print(list)
             self.contactList += list
             self.tableView?.reloadData()
